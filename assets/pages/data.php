@@ -7,7 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     
     $apiUrl = 'https://shahidwalla.cyclic.app/api/batch/-yakeen-2.0-2023-/-botany-(pw-stars)-';
-    $subject = 'zoology.html';
+    $subject = 'subject.html';
     
 
     $video_data = json_decode($VideoJson, true);
