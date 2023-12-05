@@ -6,7 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $DppJson = $_POST["dppjson"];
 
     
-    $apiUrl = 'https://shahidwalla.cyclic.app/api/batch/-yakeen-2.0-2023-/-botany-(pw-stars)-';
+    $apiUrl = 'https://shahidwalla.vercel.app/api/batch/-yakeen-2.0-2023-/zoology--pw-stars--2993';
     $subject = 'subject.html';
     
 
@@ -25,7 +25,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $video_output[] = [
             "name" => $item['topic'],
             "image" => $item['videoDetails']['image'],
-            "videoUrl" => str_replace(['d1d34p8vz63oiq', 'master.mpd'], ['d26g5bnklkwsh4', 'hls/480/main.m3u8'], $item['videoDetails']['videoUrl']),
+            "contentType" => 'video',
+            "contentUrl" => str_replace(['d1d34p8vz63oiq', 'master.mpd'], ['d26g5bnklkwsh4', 'hls/480/main.m3u8'], $item['videoDetails']['videoUrl']),
             "datetime" => $item['date']
         ];
     }
@@ -57,7 +58,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $note_output[] = [
             "name" => $name . ".pdf",
-            "noteUrl" => $baseUrl . $key,
+            "contentType" => 'note',
+            "contentUrl" => $baseUrl . $key,
             "datetime" => $datetime,
         ];
     }
@@ -86,8 +88,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
         $dpp_output[] = [
-            "name" => $name . ".pdf",
-            "dppUrl" => $baseUrl . $key,
+             "name" => $name . ".pdf",
+            "contentType" => 'dpp',
+            "contentUrl" => $baseUrl . $key,
             "datetime" => $datetime,
         ];
     }
@@ -133,7 +136,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     ////////////////////////////////////////////////////////////////////////////////
 
 
-    $videourl = $apiUrl."/".$chapterSlug."/videosall";
+    $videourl = $apiUrl."/".$chapterSlug;
 
     $video = curl_init($videourl);
 
@@ -146,7 +149,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     /////////////////////////////////////////////////////////////////
 
-    $noteurl = $apiUrl."/".$chapterSlug."/notesall";
+    $noteurl = $apiUrl."/".$chapterSlug;
 
     $note = curl_init($noteurl);
 
@@ -160,7 +163,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     /////////////////////////////////////////////////////////////////
     
-    $dppurl = $apiUrl."/".$chapterSlug."/dppsall";
+    $dppurl = $apiUrl."/".$chapterSlug;
 
     $dpp = curl_init($dppurl);
 
@@ -192,6 +195,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 ?>
-
-<img src="" alt="">
-
